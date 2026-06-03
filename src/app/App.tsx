@@ -111,11 +111,11 @@ export default function App() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_72%,rgba(232,81,2,0.30),transparent_32%),radial-gradient(circle_at_82%_18%,rgba(255,247,237,0.07),transparent_30%)]" />
           <div className="relative z-10 mx-auto flex min-h-[82vh] max-w-7xl flex-col">
             <TopRule onMenuClick={() => setIsMobileNavOpen(true)} />
-            <div className="grid flex-1 items-center gap-12 lg:grid-cols-1">
+            <div className="absolute left-0 top-[20%]">
+              <ImageWithFallback src={gattudLogo} alt="Gattud Design Studios logo" className="h-auto w-36 object-contain md:w-44" />
+            </div>
+            <div className="flex flex-1 items-center">
               <Reveal>
-                <div className="mb-10 mt-12 flex items-center">
-                  <ImageWithFallback src={gattudLogo} alt="Gattud Design Studios logo" className="h-auto w-36 object-contain md:w-44" />
-                </div>
                 <h1 className="max-w-6xl font-['Quattrocento'] text-[clamp(4rem,10vw,10.5rem)] font-bold leading-[0.86] tracking-[-0.07em]">
                   The Soul of <span className="italic text-primary">Service</span>
                 </h1>
@@ -131,7 +131,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="purpose" className="grid min-h-screen bg-[#fffaf2] lg:grid-cols-[1.05fr_0.95fr]">
+        <section id="purpose" className="grid bg-[#fffaf2] lg:grid-cols-[1.05fr_0.95fr]">
           <div className="px-6 py-10 md:px-12 lg:px-16 lg:py-12">
             <TopRule onMenuClick={() => setIsMobileNavOpen(true)} />
             <Reveal className="mt-28 max-w-2xl lg:mt-44">
@@ -145,7 +145,7 @@ export default function App() {
               </p>
             </Reveal>
           </div>
-          <motion.div initial={{ opacity: 0, scale: 1.04 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.1, ease: smoothEase }} className="relative min-h-[520px] overflow-hidden bg-muted lg:min-h-screen">
+          <motion.div initial={{ opacity: 0, scale: 1.04 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.1, ease: smoothEase }} className="relative min-h-[520px] overflow-hidden bg-muted lg:min-h-0">
             <ImageWithFallback src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1200&h=1500&fit=crop&auto=format" alt="Executive catering table set beside city windows" className="h-full w-full object-cover transition duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#200F07]/35 via-transparent to-transparent" />
           </motion.div>
