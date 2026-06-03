@@ -362,29 +362,29 @@ export default function App() {
             <div className="grid grid-cols-3 gap-[10px]" style={{ height: "clamp(320px, 45vw, 640px)" }}>
               <div className="flex h-full flex-col gap-[10px]">
                 <div className="group flex-[0.45] cursor-pointer overflow-hidden" onClick={() => openLightbox(0)}>
-                  <ImageWithFallback src={creativeImages[0]} alt="Creative direction 1" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <ImageWithFallback src={creativeImages[0]} alt="Creative direction 1" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
                 </div>
                 <div className="group flex-[0.55] cursor-pointer overflow-hidden" onClick={() => openLightbox(3)}>
-                  <ImageWithFallback src={creativeImages[3]} alt="Creative direction 4" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <ImageWithFallback src={creativeImages[3]} alt="Creative direction 4" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
                 </div>
               </div>
               <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(1)}>
-                <ImageWithFallback src={creativeImages[1]} alt="Creative direction 2" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <ImageWithFallback src={creativeImages[1]} alt="Creative direction 2" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
               </div>
               <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(2)}>
-                <ImageWithFallback src={creativeImages[2]} alt="Creative direction 3" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <ImageWithFallback src={creativeImages[2]} alt="Creative direction 3" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
               </div>
             </div>
             {/* Bottom section: three equal columns */}
             <div className="grid grid-cols-3 gap-[10px]" style={{ height: "clamp(200px, 28vw, 400px)" }}>
               <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(6)}>
-                <ImageWithFallback src={creativeImages[6]} alt="Creative direction 7" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <ImageWithFallback src={creativeImages[6]} alt="Creative direction 7" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
               </div>
               <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(5)}>
-                <ImageWithFallback src={creativeImages[5]} alt="Creative direction 6" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <ImageWithFallback src={creativeImages[5]} alt="Creative direction 6" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
               </div>
               <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(4)}>
-                <ImageWithFallback src={creativeImages[4]} alt="Creative direction 5" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <ImageWithFallback src={creativeImages[4]} alt="Creative direction 5" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
               </div>
             </div>
           </div>
