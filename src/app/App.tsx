@@ -1,8 +1,18 @@
-import { useState, type ReactNode } from "react";
-import { ArrowDown, Menu } from "lucide-react";
+import { useState, useEffect, useCallback, type ReactNode } from "react";
+import { ArrowDown, ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import gattudLogo from "@/imports/Gattud_Design_Logo.svg";
+
+const creativeImages = [
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%201.webp",
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%202.webp",
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%203.webp",
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%204.webp",
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%205.webp",
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%206.webp",
+  "https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/image%207.webp",
+];
 
 const navItems = [
   { number: "01", label: "Cover", href: "#cover" },
@@ -52,6 +62,23 @@ function TopRule({ onMenuClick }: { onMenuClick?: () => void }) {
 
 export default function App() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prevImage = useCallback(() => setLightboxIndex(i => i !== null ? (i - 1 + creativeImages.length) % creativeImages.length : null), []);
+  const nextImage = useCallback(() => setLightboxIndex(i => i !== null ? (i + 1) % creativeImages.length : null), []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (lightboxIndex === null) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
 
   return (
     <main className="min-h-screen scroll-smooth bg-background font-['Work_Sans'] text-foreground">
@@ -203,7 +230,7 @@ export default function App() {
                 A brand is only as strong as the values it stands upon. We have codified the 'Mangia Magic' into three non-negotiable pillars that ensure excellence in every room we enter.
               </p>
               <motion.div className="mt-12 max-w-lg overflow-hidden border border-[#200F07]/18 bg-muted">
-                <ImageWithFallback src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=900&h=620&fit=crop&auto=format" alt="Hands arranging ingredients in a professional kitchen" className="h-96 w-full object-cover transition duration-500 lg:h-[430px]" />
+                <ImageWithFallback src="https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/Our%20Pillars.webp" alt="Hands arranging ingredients in a professional kitchen" className="h-96 w-full object-cover transition duration-500 lg:h-[430px]" />
               </motion.div>
             </Reveal>
             <div className="grid gap-5">
@@ -291,7 +318,7 @@ export default function App() {
             </Reveal>
           </div>
           <motion.div {...revealProps} className="relative z-10 mt-16 overflow-hidden border border-[#200F07]/18 bg-muted">
-            <ImageWithFallback src="https://images.unsplash.com/photo-1576867757603-05b134ebc379?w=1500&h=620&fit=crop&auto=format" alt="Refined table setting with warm natural details" className="h-[360px] w-full object-cover transition duration-500" />
+            <ImageWithFallback src="https://pub-c90ad98f4e0a47e0adc56b1c9b55420a.r2.dev/Our%20Focus.webp" alt="Refined table setting with warm natural details" className="h-[360px] w-full object-cover transition duration-500" />
           </motion.div>
           <div className="relative z-10 mt-12 grid gap-4 lg:grid-cols-3">
             {[
@@ -330,13 +357,109 @@ export default function App() {
               <span className="text-primary">The Core Concept:</span> Blending modern executive minimalism with the rich, tactile warmth of Tita Rose's roots. Clean but never cold; elite but profoundly welcoming.
             </p>
           </Reveal>
-          <div className="mt-16 grid gap-3 md:grid-cols-3">
-            {["https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&h=620&fit=crop&auto=format", "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&h=620&fit=crop&auto=format", "https://images.unsplash.com/photo-1519671282429-b44660ead0a7?w=900&h=620&fit=crop&auto=format"].map((src, index) => (
-              <ImageWithFallback key={src} src={src} alt={`Corporate catering service moment ${index + 1}`} className="h-72 w-full object-cover transition duration-500" />
-            ))}
+          <div className="mt-16 flex flex-col gap-[10px]">
+            {/* Top section: col 1 = two stacked, cols 2 & 3 = single tall */}
+            <div className="grid grid-cols-3 gap-[10px]" style={{ height: "clamp(320px, 45vw, 640px)" }}>
+              <div className="flex h-full flex-col gap-[10px]">
+                <div className="group flex-[0.45] cursor-pointer overflow-hidden" onClick={() => openLightbox(0)}>
+                  <ImageWithFallback src={creativeImages[0]} alt="Creative direction 1" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+                <div className="group flex-[0.55] cursor-pointer overflow-hidden" onClick={() => openLightbox(3)}>
+                  <ImageWithFallback src={creativeImages[3]} alt="Creative direction 4" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+              </div>
+              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(1)}>
+                <ImageWithFallback src={creativeImages[1]} alt="Creative direction 2" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(2)}>
+                <ImageWithFallback src={creativeImages[2]} alt="Creative direction 3" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+            </div>
+            {/* Bottom section: three equal columns */}
+            <div className="grid grid-cols-3 gap-[10px]" style={{ height: "clamp(200px, 28vw, 400px)" }}>
+              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(6)}>
+                <ImageWithFallback src={creativeImages[6]} alt="Creative direction 7" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(5)}>
+                <ImageWithFallback src={creativeImages[5]} alt="Creative direction 6" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(4)}>
+                <ImageWithFallback src={creativeImages[4]} alt="Creative direction 5" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+            </div>
           </div>
         </section>
       </div>
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+          onClick={closeLightbox}
+        >
+          {/* Close */}
+          <button
+            type="button"
+            onClick={closeLightbox}
+            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25"
+            aria-label="Close"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          {/* Prev */}
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+            className="absolute left-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25 md:left-8"
+            aria-label="Previous image"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
+
+          {/* Image */}
+          <motion.img
+            key={lightboxIndex}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            src={creativeImages[lightboxIndex]}
+            alt={`Creative direction ${lightboxIndex + 1}`}
+            className="h-[90vh] w-[90vw] object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Next */}
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+            className="absolute right-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25 md:right-8"
+            aria-label="Next image"
+          >
+            <ArrowRight className="h-5 w-5" />
+          </button>
+
+          {/* Counter */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs font-normal tracking-[0.2em] text-white/50">
+            {lightboxIndex + 1} / {creativeImages.length}
+          </div>
+
+          {/* Dot indicators */}
+          <div className="absolute bottom-12 left-1/2 flex -translate-x-1/2 gap-2">
+            {creativeImages.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(i); }}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === lightboxIndex ? "w-6 bg-white" : "w-1.5 bg-white/35 hover:bg-white/60"}`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
+      )}
     </main>
   );
 }
