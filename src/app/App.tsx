@@ -357,9 +357,9 @@ export default function App() {
               <span className="text-primary">The Core Concept:</span> Blending modern executive minimalism with the rich, tactile warmth of Tita Rose's roots. Clean but never cold; elite but profoundly welcoming.
             </p>
           </Reveal>
-          <div className="mt-16 flex flex-col gap-[10px]">
+          <div className="mt-16 flex max-w-6xl flex-col gap-[10px]">
             {/* Top section: col 1 = two stacked, cols 2 & 3 = single tall */}
-            <div className="grid grid-cols-3 gap-[10px]" style={{ height: "clamp(320px, 45vw, 640px)" }}>
+            <div className="grid grid-cols-3 gap-[10px]" style={{ aspectRatio: "16/9" }}>
               <div className="flex h-full flex-col gap-[10px]">
                 <div className="group flex-[0.45] cursor-pointer overflow-hidden" onClick={() => openLightbox(0)}>
                   <ImageWithFallback src={creativeImages[0]} alt="Creative direction 1" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
@@ -376,7 +376,7 @@ export default function App() {
               </div>
             </div>
             {/* Bottom section: three equal columns */}
-            <div className="grid grid-cols-3 gap-[10px]" style={{ height: "clamp(200px, 28vw, 400px)" }}>
+            <div className="grid grid-cols-3 gap-[10px]" style={{ aspectRatio: "16/5" }}>
               <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(6)}>
                 <ImageWithFallback src={creativeImages[6]} alt="Creative direction 7" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
               </div>
