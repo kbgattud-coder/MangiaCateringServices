@@ -153,7 +153,7 @@ export default function App() {
             </div>
             <div className="flex items-end justify-between text-[10px] font-normal uppercase tracking-[0.18em] text-white/45">
               <span>01</span>
-              <span>Prepared by Gattuso Design Studios</span>
+              <span>Prepared by Gattud Design Studios</span>
             </div>
           </div>
         </section>
