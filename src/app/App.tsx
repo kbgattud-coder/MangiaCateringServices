@@ -55,7 +55,7 @@ export default function App() {
 
   return (
     <main className="min-h-screen scroll-smooth bg-background font-['Work_Sans'] text-foreground">
-      <aside className="group fixed left-0 top-0 z-30 hidden h-screen w-[88px] overflow-hidden border-r border-white/10 bg-[#200F07] py-7 text-[#fff7ed] transition-[width] duration-500 ease-out hover:w-[286px] lg:flex lg:flex-col lg:justify-between">
+      <aside className="group fixed left-0 top-0 z-30 hidden h-screen w-[88px] overflow-hidden border-r border-white/10 bg-[#200F07] py-7 text-[#fff7ed] transition-[width] duration-500 ease-out hover:w-[286px] lg:flex lg:flex-col lg:justify-center">
         <nav className="flex flex-col gap-2 px-5">
           {navItems.map((item) => (
             <a key={item.href} href={item.href} className="flex h-11 w-[246px] items-center gap-4 rounded-sm px-3 text-white/48 transition duration-300 hover:bg-white/[0.06] hover:text-primary">
@@ -64,7 +64,7 @@ export default function App() {
             </a>
           ))}
         </nav>
-        <div className="px-8">
+        <div className="absolute bottom-7 px-8">
           <ArrowDown className="h-4 w-4 text-primary" />
         </div>
       </aside>
@@ -113,7 +113,7 @@ export default function App() {
             <TopRule onMenuClick={() => setIsMobileNavOpen(true)} />
             <div className="grid flex-1 items-center gap-12 lg:grid-cols-1">
               <Reveal>
-                <div className="mb-10 flex items-center">
+                <div className="mb-10 mt-12 flex items-center">
                   <ImageWithFallback src={gattudLogo} alt="Gattud Design Studios logo" className="h-auto w-36 object-contain md:w-44" />
                 </div>
                 <h1 className="max-w-6xl font-['Quattrocento'] text-[clamp(4rem,10vw,10.5rem)] font-bold leading-[0.86] tracking-[-0.07em]">
