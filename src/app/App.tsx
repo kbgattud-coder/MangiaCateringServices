@@ -350,41 +350,45 @@ export default function App() {
 
         <section id="creative-direction" className="bg-[#200F07] px-6 py-10 text-[#fff7ed] md:px-12 lg:px-16 lg:py-14">
           <TopRule onMenuClick={() => setIsMobileNavOpen(true)} />
-          <Reveal className="mt-16 max-w-4xl">
-            <p className="mb-5 text-xs font-normal uppercase tracking-[0.24em] text-primary">Creative Direction</p>
-            <h2 className="font-['Quattrocento'] text-5xl font-bold leading-none tracking-[-0.04em] md:text-8xl">VISUALIZING WARM PRECISION.</h2>
-            <p className="mt-8 max-w-2xl font-['Quattrocento'] text-xl font-medium leading-tight text-[#e4d4c3]">
-              <span className="text-primary">The Core Concept:</span> Blending modern executive minimalism with the rich, tactile warmth of Tita Rose's roots. Clean but never cold; elite but profoundly welcoming.
-            </p>
-          </Reveal>
-          <div className="mt-16 flex max-w-6xl flex-col gap-[10px]">
-            {/* Top section: col 1 = two stacked, cols 2 & 3 = single tall */}
-            <div className="grid grid-cols-3 gap-[10px]" style={{ aspectRatio: "16/9" }}>
-              <div className="flex h-full flex-col gap-[10px]">
-                <div className="group flex-[0.45] cursor-pointer overflow-hidden" onClick={() => openLightbox(0)}>
-                  <ImageWithFallback src={creativeImages[0]} alt="Creative direction 1" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+          <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-start lg:gap-16">
+            {/* Left: text content */}
+            <Reveal className="lg:sticky lg:top-16">
+              <p className="mb-5 text-xs font-normal uppercase tracking-[0.24em] text-primary">Creative Direction</p>
+              <h2 className="font-['Quattrocento'] text-5xl font-bold leading-none tracking-[-0.04em] md:text-6xl lg:text-7xl">VISUALIZING WARM PRECISION.</h2>
+              <p className="mt-8 font-['Quattrocento'] text-xl font-medium leading-tight text-[#e4d4c3]">
+                <span className="text-primary">The Core Concept:</span> Blending modern executive minimalism with the rich, tactile warmth of Tita Rose's roots. Clean but never cold; elite but profoundly welcoming.
+              </p>
+            </Reveal>
+            {/* Right: gallery */}
+            <div className="flex flex-col gap-[10px]">
+              {/* Top section: col 1 = two stacked, cols 2 & 3 = single tall */}
+              <div className="grid grid-cols-3 gap-[10px]" style={{ aspectRatio: "16/9" }}>
+                <div className="flex h-full flex-col gap-[10px]">
+                  <div className="group flex-[0.45] cursor-pointer overflow-hidden" onClick={() => openLightbox(0)}>
+                    <ImageWithFallback src={creativeImages[0]} alt="Creative direction 1" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                  </div>
+                  <div className="group flex-[0.55] cursor-pointer overflow-hidden" onClick={() => openLightbox(3)}>
+                    <ImageWithFallback src={creativeImages[3]} alt="Creative direction 4" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                  </div>
                 </div>
-                <div className="group flex-[0.55] cursor-pointer overflow-hidden" onClick={() => openLightbox(3)}>
-                  <ImageWithFallback src={creativeImages[3]} alt="Creative direction 4" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(1)}>
+                  <ImageWithFallback src={creativeImages[1]} alt="Creative direction 2" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                </div>
+                <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(2)}>
+                  <ImageWithFallback src={creativeImages[2]} alt="Creative direction 3" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
                 </div>
               </div>
-              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(1)}>
-                <ImageWithFallback src={creativeImages[1]} alt="Creative direction 2" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
-              </div>
-              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(2)}>
-                <ImageWithFallback src={creativeImages[2]} alt="Creative direction 3" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
-              </div>
-            </div>
-            {/* Bottom section: three equal columns */}
-            <div className="grid grid-cols-3 gap-[10px]" style={{ aspectRatio: "16/5" }}>
-              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(6)}>
-                <ImageWithFallback src={creativeImages[6]} alt="Creative direction 7" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
-              </div>
-              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(5)}>
-                <ImageWithFallback src={creativeImages[5]} alt="Creative direction 6" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
-              </div>
-              <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(4)}>
-                <ImageWithFallback src={creativeImages[4]} alt="Creative direction 5" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+              {/* Bottom section: three equal columns */}
+              <div className="grid grid-cols-3 gap-[10px]" style={{ aspectRatio: "16/5" }}>
+                <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(6)}>
+                  <ImageWithFallback src={creativeImages[6]} alt="Creative direction 7" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                </div>
+                <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(5)}>
+                  <ImageWithFallback src={creativeImages[5]} alt="Creative direction 6" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                </div>
+                <div className="group cursor-pointer overflow-hidden" onClick={() => openLightbox(4)}>
+                  <ImageWithFallback src={creativeImages[4]} alt="Creative direction 5" className="h-full w-full object-cover transition duration-500 group-hover:brightness-110" />
+                </div>
               </div>
             </div>
           </div>
